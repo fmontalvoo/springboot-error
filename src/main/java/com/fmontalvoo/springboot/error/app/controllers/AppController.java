@@ -27,9 +27,11 @@ public class AppController {
 	@GetMapping("/view/{id}")
 	public String view(@PathVariable Integer id, Model model) {
 
-		Usuario usuario = usuarioService.obtenerPorId(id);
-		if (usuario == null)
-			throw new UserNotFoundException(id.toString());
+//		Usuario usuario = usuarioService.obtenerPorId(id);
+		Usuario usuario = usuarioService.buscarPorId(id).orElseThrow(() -> new UserNotFoundException(id.toString()));
+
+//		if (usuario == null)
+//			throw new UserNotFoundException(id.toString());
 
 		model.addAttribute("usuario", usuario);
 		return "view";

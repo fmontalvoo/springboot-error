@@ -2,6 +2,7 @@ package com.fmontalvoo.springboot.error.app.services;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 				return usuario;
 		}
 		return null;
+	}
+
+	@Override
+	public Optional<Usuario> buscarPorId(Integer id) {
+		return Optional.ofNullable(this.obtenerPorId(id));
 	}
 
 	@Override
